@@ -31,34 +31,31 @@ def menu_kasir(inventory):
             nama = input("Masukkan Nama Barang yang dibeli: ")
             item = inventory.find_item_by_name(nama)
             if item:
-                jumlah = int(input("Masukkan jumlah pembelian: "))
-                if item.stok >= jumlah:
-                    total_harga = item.harga * jumlah
-                    item.stok -= jumlah
+               jumlah = int(input("Masukkan jumlah pembelian: "))
+            if item.stok >= jumlah:
+               total_harga = item.harga * jumlah
+               item.stok -= jumlah
+               
+            inventory.simpan_ke_csv()
 
-                    transaksi = f"{item.nama} x {jumlah} = Rp{total_harga}"
-                    transaksi_queue.enqueue(transaksi)
+            transaksi = f"{item.nama} x {jumlah} = Rp{total_harga}"
+            transaksi_queue.enqueue(transaksi)
 
-                    LogManager.save_log(RIWAYAT_FILENAME, 'Update Stok', item.nama, item.stok)
+            LogManager.save_log(RIWAYAT_FILENAME, 'Update Stok', item.nama, item.stok)
 
-                    print("Transaksi berhasil!")
-                    print(f"Total Harga: Rp{total_harga}")
-                    print("Struk:")
-                    print("======================")
-                    print(f"Barang: {item.nama}")
-                    print(f"Jumlah: {jumlah}")
-                    print(f"Total: Rp{total_harga}")
-                    print("======================")
-                else:
-                    print("Stok tidak mencukupi.")
-            else:
-                print("Barang tidak ditemukan.")
-        elif pilihan == '4':
-            transaksi_queue.display_queue()
-        elif pilihan == '5':
-            break
+            print("Transaksi berhasil!")
+            print(f"Total Harga: Rp{total_harga}")
+            print("Struk:")
+            print("======================")
+            print(f"Barang: {item.nama}")
+            print(f"Jumlah: {jumlah}")
+            print(f"Total: Rp{total_harga}")
+            print("======================")
         else:
-            print("Pilihan tidak valid. Coba lagi.")
+            print("Stok tidak mencukupi.")
+    else:
+        print("Barang tidak ditemukan.")
+
 
 def menu_admin(inventory):
     while True:
