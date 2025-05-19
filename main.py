@@ -153,7 +153,14 @@ def main():
         pilihan = input("Pilih menu: ")
 
         if pilihan == '1':
-            menu_admin(inventory)
+            password_admin = input("Masukkan password admin: ")
+            if password_admin == "sosokadmin": 
+                print("Login admin berhasil.")
+                menu_admin(inventory)
+            else:
+                print("Password admin salah!")
+                main()
+                
         elif pilihan == '2':
             menu_kasir(inventory)
         elif pilihan == '3':
