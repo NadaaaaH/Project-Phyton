@@ -1,2 +1,6 @@
 id_barang,nama,kategori,harga,stok
-12,Mie Indomie,Makanan,3000,97
+1,Indomie,Makanan,3000,97
+2,Tanggo,Makanan,7000,85
+3,Roma kelapa,Makanan,8500,103
+4,Better,Makanan,5000,47
+5,Qtela,Makanan,6500,32
